@@ -1,31 +1,24 @@
-//script
-
-import praw
+import feedparser
 from textblob import TextBlob
 import smtplib
 from email.message import EmailMessage
-import os
 
-reddit = praw.Reddit(
-    client_id=os.environ['CLIENT_ID'],
-    client_secret=os.environ['CLIENT_SECRET'],
-    user_agent="review_script"
-)
+rss_url="https://www.reddit.com/r/kindlescribe/.rss"
 
-subreddit = reddit.subreddit("kindlescribe")
+feed=feedparser.parse(rss_url)
 
 positive=[]
 negative=[]
 
-for post in subreddit.new(limit=30):
+for post in feed.entries[:20]:
 
-    text=post.title
-    score=TextBlob(text).sentiment.polarity
+    title=post.title
+    sentiment=TextBlob(title).sentiment.polarity
 
-    if score>0:
-        positive.append(text)
+    if sentiment>0:
+        positive.append(title)
     else:
-        negative.append(text)
+        negative.append(title)
 
 body="Positive Reviews:\n\n"
 
@@ -39,12 +32,13 @@ for n in negative:
 
 msg=EmailMessage()
 msg['Subject']="Daily Kindle Scribe Reviews"
-msg['From']=os.environ['EMAIL']
-msg['To']=os.environ['EMAIL']
+msg['From']="monishgit@gmail.com"
+msg['To']="monishrm@amazon.com"
 
 msg.set_content(body)
 
 server=smtplib.SMTP_SSL("smtp.gmail.com",465)
-server.login(os.environ['EMAIL'],os.environ['EMAIL_PASSWORD'])
+server.login("monishgit@gmail.com","tloc bwwx zxwc oypg")
+
 server.send_message(msg)
 server.quit()
