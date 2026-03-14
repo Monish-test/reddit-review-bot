@@ -1,0 +1,25 @@
+name: Reddit Mail Automation
+
+on:
+  schedule:
+    - cron: '30 2 * * *'
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.10
+
+    - name: Install libraries
+      run: |
+        pip install praw
+        pip install textblob
+
+    - name: Run Script
+      run: python reddit_script.py
