@@ -37,7 +37,7 @@ for n in negative:
 msg=EmailMessage()
 msg['Subject']="Daily Kindle Scribe Reviews"
 msg['From']=EMAIL
-msg['To']="monishrm@amazon.com"
+msg['To']="monishrm@amazon.com","qelavara@amazon.com"
 
 msg.set_content(body)
 
