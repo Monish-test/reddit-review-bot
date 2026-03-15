@@ -24,4 +24,4 @@ jobs:
         pip install fpdf
 
     - name: Run Script
-      run: python reddit_mail.py
+      run: python reddit_script.py
