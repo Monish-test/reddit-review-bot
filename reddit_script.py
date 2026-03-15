@@ -54,7 +54,7 @@ pdf.output("reviews.pdf")
 msg=EmailMessage()
 msg['Subject']="Daily Kindle Scribe Reviews"
 msg['From']="monishgit@gmail.com"
-msg['To']="monishrm@amazon.com","qelavara@amazon.com"
+msg['To']="monishrm@amazon.com, qelavara@amazon.com"
 
 msg.set_content("Please find the attached Reddit review report.")
 
