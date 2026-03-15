@@ -37,13 +37,13 @@ pdf.cell(200,10,txt=" ",ln=True)
 pdf.cell(200,10,txt="Positive Reviews:",ln=True)
 
 for p in positive:
-    pdf.multi_cell(0,8,p)
+    pdf.multi_cell(0,8,p.encode('latin-1','replace').decode('latin-1'))
 
 pdf.cell(200,10,txt=" ",ln=True)
 pdf.cell(200,10,txt="Negative Reviews:",ln=True)
 
 for n in negative:
-    pdf.multi_cell(0,8,n)
+   pdf.multi_cell(0,8,n.encode('latin-1','replace').decode('latin-1'))
 
 pdf.output("reviews.pdf")
 
