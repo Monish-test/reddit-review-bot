@@ -88,7 +88,7 @@ PASSWORD = os.getenv("EMAIL_PASS")
 msg = EmailMessage()
 msg['Subject'] = "Daily Kindle Scribe Reviews"
 msg['From'] = EMAIL
-msg['To'] = "monishrm@amazon.com, qelavara@amazon.com, rdkavith@amazon.com"
+msg['To'] = "monishrm@amazon.com, qelavara@amazon.com"
 
 msg.set_content("Please find the attached Reddit review report with clickable links.")
 
